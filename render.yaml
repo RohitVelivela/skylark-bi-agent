@@ -1,11 +1,9 @@
 services:
   - type: web
-    name: skylark-bi-agent
+    name: skylark-bi-agent-api
     env: python
     plan: free
-    buildCommand: >
-      cd frontend && npm install && npm run build && cd .. &&
-      pip install -r backend/requirements.txt
+    buildCommand: pip install -r backend/requirements.txt
     startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: MONDAY_API_TOKEN

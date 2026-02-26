@@ -35,6 +35,7 @@ from dotenv import load_dotenv
 load_dotenv()  # must run before any module reads os.environ / Settings
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -98,6 +99,14 @@ def create_app() -> FastAPI:
         docs_url="/docs",
         redoc_url="/redoc",
         lifespan=lifespan,
+    )
+
+    # ── CORS (allow Vercel frontend + local dev) ───────────────────────────
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],   # tighten to your Vercel URL after first deploy
+        allow_methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["*"],
     )
 
     # ── Routers ───────────────────────────────────────────────────────────
