@@ -75,13 +75,7 @@ uvicorn backend.main:app --reload --port 8000
 # Open http://localhost:8000
 ```
 
-### 5. Deploy to Render.com
 
-1. Push repo to GitHub
-2. render.com → New Web Service → connect GitHub repo
-3. Render auto-detects `render.yaml`
-4. Add 4 environment variables in Render dashboard
-5. Deploy → live HTTPS URL in ~2 minutes
 
 ## Sample Queries
 
